@@ -1,0 +1,52 @@
+<div class="card bonifico-detail">
+<article class="card-body">
+	<h4 class="card-title text-center mb-4 mt-1">Riepilogo bonifico</h4>
+	<hr>
+	<form (ngSubmit)="onSubmit()" #bonificoForm="ngForm">
+	<div class="form-group">
+		<label for="nome">Nome beneficiario</label>
+		<div class="input-group">
+			<input id='nome' class="form-control" [(ngModel)]="model.nome" name="nome"	#nome="ngModel" type="text" placeholder='Inserisci nome beneficiario' disabled required>
+			
+		</div> <!-- input-group.// -->
+	</div> <!-- form-group// -->
+	<div class="form-group">
+		<label for="cognome">Cognome beneficiario</label>
+		<div class="input-group">
+			<input id="cognome" class="form-control" placeholder="Inserisci cognome beneficiario" [(ngModel)]="model.cognome" name="cognome" #cognome="ngModel" type="text" disabled required>
+			
+		</div> <!-- input-group.// -->
+	</div> <!-- form-group// -->
+
+	<div class="form-group">
+		<label for="data_esecuzione">Data esecuzione</label>
+		<div class="input-group">
+			<input id='data_esecuzione' class="form-control" placeholder="Inserisci data esecuzione" [(ngModel)]="model.data_esecuzione" name="data_esecuzione" #data_esecuzione="ngModel" type="text" disabled required>
+		</div> <!-- input-group.// -->
+	</div> <!-- form-group// -->
+
+
+	<div class="form-group">
+		<label for="importo">Importo</label>
+		<div class="input-group">
+			<input id="importo" class="form-control" placeholder="Inserisci importo" [(ngModel)]="model.importo" name="importo"	#importo="ngModel" type="text" disabled required>
+			
+		</div> <!-- input-group.// -->
+	</div> <!-- form-group// -->
+
+
+	<div class="form-group">
+		<label for="iban">Iban</label>
+		<div class="input-group">
+			<input id="iban" class="form-control" placeholder="Inserisci iban" [(ngModel)]="model.iban" name="iban"	#iban="ngModel" type="text" disabled required>
+		</div> <!-- input-group.// -->
+	</div> <!-- form-group// -->
+	<br/>
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary btn-block"> Conferma  </button>
+		<button type="button" class="btn btn-secondary btn-block" (click)="goBack()">Annulla</button>
+	</div> <!-- form-group// -->
+	<ng4-loading-spinner> </ng4-loading-spinner>
+	</form>
+</article>
+</div> <!-- card.// -->

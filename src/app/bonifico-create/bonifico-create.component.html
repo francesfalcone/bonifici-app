@@ -1,0 +1,106 @@
+<div class="card bonifico-create">
+<article class="card-body">
+	<h4 class="card-title text-center mb-4 mt-1">Nuovo Bonifico</h4>
+	<hr>
+	<form (ngSubmit)="onSubmit()" [formGroup]="bonificoForm">
+	<div class="form-group">
+		<label for="nome">Nome beneficiario</label>
+		<div class="input-group">
+			<input class="form-control" id="nome" name="nome" formControlName="nome" type="text" placeholder='Inserisci nome beneficiario' [ngClass]="{ 'borderError': submitted && nome.errors }">
+			
+		</div> <!-- input-group.// -->
+		<div *ngIf="submitted && nome.errors"
+			class="error-input">
+			<div *ngIf="nome.errors.required">
+				Il campo Nome beneficiario è obbligatorio.
+			</div>
+		</div>
+	</div> <!-- form-group// -->
+	<div class="form-group">
+		<label for="cognome">Cognome beneficiario</label>
+		<div class="input-group">
+			<input id="cognome" class="form-control" formControlName="cognome" placeholder="Inserisci cognome beneficiario" name="cognome" type="text" [ngClass]="{ 'borderError': submitted && cognome.errors }">
+			
+		</div> <!-- input-group.// -->
+		<div *ngIf="submitted && cognome.errors"
+			class="error-input">
+			<div *ngIf="cognome.errors.required">
+				Il campo Cognome beneficiario è obbligatorio.
+			</div>
+		</div>
+	</div> <!-- form-group// -->
+
+	<div class="form-group">
+		<label for="data_esecuzione">Data esecuzione (gg/mm/aaaa)</label>
+		<div class="input-group">
+			<input id='data_esecuzione' class="form-control" formControlName="data_esecuzione" placeholder="gg/mm/aaaa" name="data_esecuzione" maxlength="10" type="text" [ngClass]="{ 'borderError': (submitted && data_esecuzione.errors) || (submitted && bonificoForm.errors != null && bonificoForm.errors.dateRange) }">
+		</div> <!-- input-group.// -->
+		<div *ngIf="submitted && data_esecuzione.errors"
+			class="error-input" >
+			<div *ngIf="data_esecuzione.errors.required">
+				Il campo Data esecuzione è obbligatorio.
+			</div>
+			<div *ngIf="data_esecuzione.errors.dateInvalid"> 
+				Data non valida.
+			</div> 
+		</div>
+		<div *ngIf="submitted && bonificoForm.errors != null && bonificoForm.errors.dateRange"
+			class="error-input" >
+			<div> 
+    			La data esecuzione deve essere compresa tra data inizio e data limite.
+			</div>
+		</div>
+	</div> <!-- form-group// -->
+
+
+	<div class="form-group">
+		<label for="importo">Importo</label>
+		<div class="input-group">
+			<input id="importo" class="form-control" formControlName="importo" placeholder="Inserisci importo" name="importo" type="text" [ngClass]="{ 'borderError': submitted && importo.errors }">
+		</div> <!-- input-group.// -->
+		<div *ngIf="submitted && importo.errors"
+			class="error-input">
+			<div *ngIf="importo.errors.required">
+				Il campo Importo è obbligatorio.
+			</div>
+			<div *ngIf="importo.errors.importoInvalid">
+				Importo non valido.
+			</div>
+		</div>
+	</div> <!-- form-group// -->
+
+
+	<div class="form-group">
+		<label for="iban">Iban</label>
+		<div class="input-group">
+			<input id="iban" class="form-control" placeholder="Inserisci iban" formControlName="iban" name="iban" type="text" maxlength="27" [ngClass]="{ 'borderError': submitted && iban.errors }">
+		</div> <!-- input-group.// -->
+		<div *ngIf="submitted && iban.errors"
+			class="error-input">
+			<div *ngIf="iban.errors.required">
+				Il campo Iban è obbligatorio.
+			</div>
+		</div>
+	</div> <!-- form-group// -->
+
+	<div class="form-group">
+		<label for="data_start">Data inizio</label>
+		<div class="input-group">
+			<input id='data_start' class="form-control" formControlName="data_start" name="data_start" type="text" disabled useValueAsDate>
+		</div> <!-- input-group.// -->
+	</div> <!-- form-group// -->
+
+	<div class="form-group">
+		<label for="data_end">Data limite</label>
+		<div class="input-group">
+			<input id='data_end' class="form-control" formControlName="data_end" name="data_end" type="text" disabled useValueAsDate>
+		</div> <!-- input-group.// -->
+	</div> <!-- form-group// -->
+	
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary btn-block"> Esegui  </button>
+	</div> <!-- form-group// -->
+	<ng4-loading-spinner> </ng4-loading-spinner>
+	</form>
+</article>
+</div> <!-- card.// -->

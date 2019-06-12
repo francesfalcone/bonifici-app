@@ -1,0 +1,11 @@
+.bonifico-create { 
+  	margin: 20px auto;
+   	width: 70%;
+}
+.error-input {
+	color: red;
+    padding: 5px;
+}
+.borderError {
+	border-color:red;
+}
