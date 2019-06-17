@@ -2,7 +2,7 @@
 <article class="card-body">
 	<h4 class="card-title text-center mb-4 mt-1">Nuovo Bonifico</h4>
 	<hr>
-	<form (ngSubmit)="onSubmit()" [formGroup]="bonificoForm">
+	<form (ngSubmit)="onSubmit(bonificoForm.value)" [formGroup]="bonificoForm">
 	<div class="form-group">
 		<label for="nome">Nome beneficiario</label>
 		<div class="input-group">

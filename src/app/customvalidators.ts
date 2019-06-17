@@ -37,7 +37,6 @@ export class CustomValidator {
     let value = c.value;
     if (value && typeof value === "string") {
       let match = value.match(/^\d+(\,\d{2})?$/);
-      console.log(match)
       if (!match) {
         return {'importoInvalid': true};
       }

@@ -40,27 +40,27 @@ export class BonificoCreateComponent implements OnInit {
 	  this.bonificoForm.controls['data_end'].setValue(data.data.dataLimite);
   }
 
-  onSubmit(){
+  onSubmit(bonificoData){
   	this.submitted = true;
   	if (this.bonificoForm.invalid) {
         return;
     }
     this.spinnerService.show();
     //simulo un delay per la chiamata al servizio di backend(mockato)
-    setTimeout(this.callVerify, 5000, this.bonificoForm, this.spinnerService, this.router, this.bonificoService);
+    setTimeout(this.callVerify, 5000, bonificoData, this.spinnerService, this.router, this.bonificoService);
   }
 
-  callVerify(bonificoForm,spinnerService,router,bonificoService) {
-    let resultVerify = bonificoService.verify(bonificoForm.controls);
+  callVerify(bonificoData,spinnerService,router,bonificoService) {
+    let resultVerify = bonificoService.verify(bonificoData);
     if (resultVerify.result.outcome == "SUCCESS"){
       spinnerService.hide();
       router.navigate(['/bonifico-detail', 
         {
-          nome: bonificoForm.controls['nome'].value, 
-          cognome: bonificoForm.controls['cognome'].value,
-          importo:  bonificoForm.controls['importo'].value,
-          data_esecuzione : bonificoForm.controls['data_esecuzione'].value,
-          iban: bonificoForm.controls['iban'].value
+          nome: bonificoData.nome, 
+          cognome: bonificoData.cognome,
+          importo:  bonificoData.importo,
+          data_esecuzione : bonificoData.data_esecuzione,
+          iban: bonificoData.iban
         }]);
     }else{
       spinnerService.hide();
